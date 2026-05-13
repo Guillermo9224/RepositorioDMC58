@@ -10,6 +10,8 @@ sesion = st.sidebar.selectbox("Seleccione una sesion",["Sesion 1","Sesion 2","Se
 
 if sesion == "Sesion 1":
   st.write("Bienvenido a la sesion 1")
+  st.image("Python_Logo.png")
+
 
 elif sesion =="Sesion 2":
   st.write("Bienvenido a la sesion 2")
@@ -19,3 +21,6 @@ elif sesion =="Sesion 3":
 
 else :
   st.write("Bienvenido a la sesion 4")
+
+
+
