@@ -10,7 +10,7 @@ sesion = st.sidebar.selectbox("Seleccione una sesion",["Sesion 1","Sesion 2","Se
 
 if sesion == "Sesion 1":
   st.write("Bienvenido a la sesion 1")
-  st.image("Python_Logo.png")
+  st.image("Python_logo.png")
 
 
 elif sesion =="Sesion 2":
