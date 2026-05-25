@@ -23,16 +23,16 @@ if Opcion == "Home":
   st.write("Bienvenido a la Presentacion del Modulo 01")
   st.image("IA2.jpg")
   st.markdown("""
-              Realizado por Juan Guillermo Carrasco Ancajima
+  Realizado por Juan Guillermo Carrasco Ancajima
               
-              ###Python Fundamentals
+  ###Python Fundamentals
               
-              2026
+  2026
               
-              Aplicacion interactica en streamlit
+  Aplicacion interactica en streamlit
               
-              Para esta aplicacion se uso chatgpt IA asi como API reference 
-              """)
+  Para esta aplicacion se uso chatgpt IA asi como API reference 
+  """)
  
 if Opcion == "Opcion 1":
 
