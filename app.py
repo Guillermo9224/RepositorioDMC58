@@ -48,7 +48,7 @@ if Opcion == "Opcion 1":
     """)
 
  # LISTA VACIA
-    if "movimientos" not in st.session_state:
+if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
     # INPUTS
@@ -65,7 +65,7 @@ if Opcion == "Opcion 1":
     )
 
     # BOTON
-    if st.button("Agregar movimiento"):
+if st.button("Agregar movimiento"):
 
         nuevo = {
             "Concepto": concepto,
@@ -78,7 +78,7 @@ if Opcion == "Opcion 1":
         st.success("Movimiento agregado correctamente")
 
     # TABLA
-    if len(st.session_state.movimientos) > 0:
+if len(st.session_state.movimientos) > 0:
 
         df = pd.DataFrame(st.session_state.movimientos)
 
@@ -101,7 +101,7 @@ if Opcion == "Opcion 1":
         st.metric("Saldo final", saldo)
 
         # RESULTADO FINAL
-        if saldo >= 0:
+ if saldo >= 0:
             st.success("Flujo de caja a favor")
         else:
             st.error("Flujo de caja en contra")
