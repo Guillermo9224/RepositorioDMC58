@@ -52,14 +52,14 @@ if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
     # INPUTS
-    concepto=st.text_input("Ingrese concepto")
+        concepto=st.text_input("Ingrese concepto")
 
-    tipo = st.selectbox(
+        tipo = st.selectbox(
         "Tipo de movimiento",
         ["Ingreso", "Gasto"]
     )
 
-    valor = st.number_input(
+        valor = st.number_input(
         "Ingrese valor",
         min_value=0
     )
