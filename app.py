@@ -25,7 +25,7 @@ if Opcion == "Home":
   st.markdown("""
   Realizado por Juan Guillermo Carrasco Ancajima
               
-  ###Python Fundamentals
+  Python Fundamentals
               
   2026
               
