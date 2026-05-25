@@ -23,9 +23,13 @@ if Opcion == "Home":
   st.image("IA2.jpg")
   st.markdown("""
               Realizado por Juan Guillermo Carrasco Ancajima
+              
               Python Fundamentals
+              
               2026
+              
               Aplicacion interactica en streamlit
+              
               Para esta aplicacion se uso chatgpt IA asi como API reference 
               """)
  
