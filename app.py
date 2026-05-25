@@ -24,7 +24,7 @@ if Opcion == "Home":
   st.markdown("""
               Realizado por Juan Guillermo Carrasco Ancajima
               
-              <i>Python Fundamentals</i>
+              Python Fundamentals
               
               2026
               
@@ -33,11 +33,10 @@ if Opcion == "Home":
               Para esta aplicacion se uso chatgpt IA asi como API reference 
               """)
  
-if Opcion == "Sesión 1":
+if Opcion == "Opcion 1":
 
-  st.write("Bienvenido la sesión 1")
-
-  st.image("Python_logo.png" )
+  st.header("Modulo Flujo de Caja")
+  
 
  
 
