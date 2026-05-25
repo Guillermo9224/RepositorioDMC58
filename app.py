@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import math
 from libreria_funciones_proyecto1 import calcular_disponibilidad_sistema
-from librería_clases_proyecto1 import Servidor
+from libreria_clases_proyecto1 import Servidor
 
 
 st.title("Presentacion Modulo 01")
