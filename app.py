@@ -35,8 +35,9 @@ if Opcion == "Home":
  
 if Opcion == "Opcion 1":
 
-  st.header("Modulo Flujo de Caja")
-  st.markdown("""
+    st.header("Modulo Flujo de Caja")
+
+    st.markdown("""
     ### Descripcion
 
     Esta aplicacion permite registrar:
@@ -47,25 +48,25 @@ if Opcion == "Opcion 1":
     y mostrar el saldo final.
     """)
 
- # LISTA VACIA
- if "movimientos" not in st.session_state:
+    # LISTA VACIA
+    if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
     # INPUTS
-   concepto=st.text_input("Ingrese concepto")
+    concepto = st.text_input("Ingrese concepto")
 
-   tipo = st.selectbox(
+    tipo = st.selectbox(
         "Tipo de movimiento",
         ["Ingreso", "Gasto"]
     )
 
-   valor = st.number_input(
+    valor = st.number_input(
         "Ingrese valor",
         min_value=0
     )
 
     # BOTON
-if st.button("Agregar movimiento"):
+    if st.button("Agregar movimiento"):
 
         nuevo = {
             "Concepto": concepto,
@@ -78,7 +79,7 @@ if st.button("Agregar movimiento"):
         st.success("Movimiento agregado correctamente")
 
     # TABLA
-if len(st.session_state.movimientos) > 0:
+    if len(st.session_state.movimientos) > 0:
 
         df = pd.DataFrame(st.session_state.movimientos)
 
@@ -102,9 +103,10 @@ if len(st.session_state.movimientos) > 0:
 
         # RESULTADO FINAL
         if saldo >= 0:
-               st.success("Flujo de caja a favor")
+            st.success("Flujo de caja a favor")
+
         else:
-               st.error("Flujo de caja en contra")
+            st.error("Flujo de caja en contra")
 
  
 
