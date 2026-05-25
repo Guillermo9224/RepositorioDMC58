@@ -108,11 +108,4 @@ else:
 
  
 
- 
-
-else:
-
-  st.write("Bienvenido la sesión 4")
-
-
 
