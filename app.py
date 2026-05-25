@@ -102,9 +102,9 @@ if len(st.session_state.movimientos) > 0:
 
         # RESULTADO FINAL
  if saldo >= 0:
-            st.success("Flujo de caja a favor")
-        else:
-            st.error("Flujo de caja en contra")
+        st.success("Flujo de caja a favor")
+ else:
+        st.error("Flujo de caja en contra")
 
  
 
