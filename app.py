@@ -8,18 +8,11 @@ from libreria_clases_proyecto1 import Servidor
 
 st.title("Presentacion Modulo 01")
 
-
 st.sidebar.title("Opciones")
-
- 
 
 st.write("Elaborado por: Guillermo Carrasco")
 
- 
-
 st.sidebar.image("DMC.png")
-
- 
 
 Opcion = st.sidebar.selectbox("Seleccione una opcion", ["Home","Opcion 1","Opcion 2","Opcion 3","Opcion 4"] )
 
@@ -36,7 +29,7 @@ if Opcion == "Home":
               
   Aplicacion interactica en streamlit
               
-  Para esta aplicacion se uso chatgpt IA asi como API reference 
+  Para esta aplicacion se uso IA , API reference asi como lo aprendido en DMC 
   """)
  
 if Opcion == "Opcion 1":
