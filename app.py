@@ -47,11 +47,9 @@ if Opcion == "Opcion 1":
     y mostrar el saldo final.
     """)
 
-    # LISTA VACIA
     if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
-    # INPUTS
     concepto = st.text_input("Ingrese concepto")
 
     tipo = st.selectbox(
@@ -64,7 +62,7 @@ if Opcion == "Opcion 1":
         min_value=0
     )
 
-    # BOTON
+
     if st.button("Agregar movimiento"):
 
         nuevo = {
@@ -77,7 +75,7 @@ if Opcion == "Opcion 1":
 
         st.success("Movimiento agregado correctamente")
 
-    # TABLA
+    
     if len(st.session_state.movimientos) > 0:
 
         df = pd.DataFrame(st.session_state.movimientos)
@@ -86,14 +84,14 @@ if Opcion == "Opcion 1":
 
         st.dataframe(df)
 
-        # TOTALES
+      
         ingresos = df[df["Tipo"] == "Ingreso"]["Valor"].sum()
 
         gastos = df[df["Tipo"] == "Gasto"]["Valor"].sum()
 
         saldo = ingresos - gastos
 
-        # METRICAS
+        
         st.metric("Total ingresos", ingresos)
 
         st.metric("Total gastos", gastos)
@@ -126,7 +124,7 @@ if Opcion == "Opcion 2":
     - Total
     """)
 
-    # LISTAS VACIAS
+    
     if "productos" not in st.session_state:
 
         st.session_state.productos = []
@@ -135,7 +133,7 @@ if Opcion == "Opcion 2":
         st.session_state.cantidades = []
         st.session_state.totales = []
 
-    # FORMULARIO
+    
 
     producto = st.text_input("Ingrese producto")
 
@@ -154,12 +152,12 @@ if Opcion == "Opcion 2":
         min_value=1
     )
 
-    # BOTON
+    
     if st.button("Agregar producto"):
 
         total = precio * cantidad
 
-        # GUARDAR DATOS
+      
         st.session_state.productos.append(producto)
 
         st.session_state.categorias.append(categoria)
@@ -172,10 +170,10 @@ if Opcion == "Opcion 2":
 
         st.success("Producto agregado correctamente")
 
-    # MOSTRAR TABLA
+    
     if len(st.session_state.productos) > 0:
 
-        # ARRAYS NUMPY
+        
         productos_np = np.array(st.session_state.productos)
 
         categorias_np = np.array(st.session_state.categorias)
@@ -186,7 +184,7 @@ if Opcion == "Opcion 2":
 
         totales_np = np.array(st.session_state.totales)
 
-        # DATAFRAME
+        
         df = pd.DataFrame({
             "Producto": productos_np,
             "Categoria": categorias_np,
@@ -199,7 +197,7 @@ if Opcion == "Opcion 2":
 
         st.dataframe(df)
 
-        # TOTAL GENERAL
+        
         suma_total = totales_np.sum()
 
         st.metric("Venta total", suma_total)
@@ -218,11 +216,11 @@ if Opcion == "Opcion 3":
     disponibilidad = ((tiempo total - tiempo caida) / tiempo total) * 100
     """)
 
-    # LISTA VACIA
+  
     if "historial_disponibilidad" not in st.session_state:
         st.session_state.historial_disponibilidad = []
 
-    # PARAMETROS
+    
     tiempo_total = st.number_input(
         "Ingrese tiempo total del sistema (horas)",
         min_value=1.0
@@ -233,7 +231,7 @@ if Opcion == "Opcion 3":
         min_value=0.0
     )
 
-    # BOTON
+    
     if st.button("Calcular disponibilidad"):
 
         resultado = calcular_disponibilidad_sistema(
@@ -257,7 +255,7 @@ if Opcion == "Opcion 3":
 
         st.session_state.historial_disponibilidad.append(nuevo)
 
-    # TABLA HISTORICA
+  
     if len(st.session_state.historial_disponibilidad) > 0:
 
         df_historial = pd.DataFrame(
@@ -285,7 +283,7 @@ if Opcion == "Opcion 4":
     usando una clase externa.
     """)
 
-    # LISTA VACIA
+    
     if "servidores" not in st.session_state:
         st.session_state.servidores = []
 
