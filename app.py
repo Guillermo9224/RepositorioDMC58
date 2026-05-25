@@ -37,7 +37,7 @@ if Opcion == "Opcion 1":
 
   st.header("Modulo Flujo de Caja")
   st.markdown("""
-    ### Descripcion
+    Descripcion
 
     Esta aplicacion permite registrar:
 
