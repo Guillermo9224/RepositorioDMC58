@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import math
+
 st.title("Presentacion Modulo 01")
 
 
@@ -206,4 +208,115 @@ if Opcion == "Opcion 2":
 
         st.metric("Venta total", suma_total)
 
+if Opcion == "Opcion 3":
 
+ def calcular_metricas_clasificacion(tp: int, fp: int, fn: int) -> dict:
+     """
+     Calcula precisión, recall y F1-score.
+     Fórmulas:
+     - precisión = TP / (TP + FP)
+     - recall = TP / (TP + FN)
+     - F1 = 2 * (precisión * recall) / (precisión + recall)
+     """
+     validar_positivo(tp, "tp", permitir_cero=True)
+     validar_positivo(fp, "fp", permitir_cero=True)
+     validar_positivo(fn, "fn", permitir_cero=True)
+ 
+     precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+     recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+     f1_score = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0
+ 
+     return {
+         "precision": round(precision, 4),
+         "recall": round(recall, 4),
+         "f1_score": round(f1_score, 4)
+     }
+ 
+ 
+ def calcular_disponibilidad_sistema(tiempo_total_horas: float, tiempo_caida_horas: float) -> dict:
+     """
+     Calcula la disponibilidad de un sistema.
+     Fórmula:
+     disponibilidad = ((tiempo_total - tiempo_caida) / tiempo_total) * 100
+     """
+     validar_positivo(tiempo_total_horas, "tiempo_total_horas")
+     validar_positivo(tiempo_caida_horas, "tiempo_caida_horas", permitir_cero=True)
+ 
+     if tiempo_caida_horas > tiempo_total_horas:
+         raise ValueError("tiempo_caida_horas no puede ser mayor que tiempo_total_horas.")
+ 
+     disponibilidad = (
+         (tiempo_total_horas - tiempo_caida_horas) / tiempo_total_horas
+     ) * 100
+ 
+     return {
+         "disponibilidad_pct": round(disponibilidad, 4)
+     }
+ 
+ 
+ def calcular_tiempo_transferencia_archivo(tamano_mb: float, velocidad_mbps: float) -> dict:
+     """
+     Calcula el tiempo estimado de transferencia de un archivo.
+     Conversión:
+     1 byte = 8 bits
+     Fórmula:
+     tiempo_segundos = (tamano_mb * 8) / velocidad_mbps
+     """
+     validar_positivo(tamano_mb, "tamano_mb")
+     validar_positivo(velocidad_mbps, "velocidad_mbps")
+ 
+     tiempo_segundos = (tamano_mb * 8) / velocidad_mbps
+     tiempo_minutos = tiempo_segundos / 60
+ 
+     return {
+         "tiempo_segundos": round(tiempo_segundos, 2),
+         "tiempo_minutos": round(tiempo_minutos, 2)
+     }
+ 
+ 
+ def calcular_tasa_error_transacciones(transacciones_fallidas: int, transacciones_totales: int) -> dict:
+     """
+     Calcula la tasa de error de transacciones.
+     Fórmula:
+     tasa_error = (fallidas / totales) * 100
+     """
+     validar_positivo(transacciones_fallidas, "transacciones_fallidas", permitir_cero=True)
+     validar_positivo(transacciones_totales, "transacciones_totales")
+ 
+     if transacciones_fallidas > transacciones_totales:
+         raise ValueError("transacciones_fallidas no puede ser mayor que transacciones_totales.")
+ 
+     tasa_error = (transacciones_fallidas / transacciones_totales) * 100
+     tasa_exito = 100 - tasa_error
+ 
+     return {
+         "tasa_error_pct": round(tasa_error, 4),
+         "tasa_exito_pct": round(tasa_exito, 4)
+     }
+ 
+ 
+ def calcular_almacenamiento_respaldo(
+     numero_usuarios: int,
+     archivos_por_usuario: int,
+     tamano_promedio_mb: float,
+     factor_respaldo: float
+ ) -> dict:
+     """
+     Calcula el almacenamiento estimado necesario para respaldo.
+     Fórmula:
+     almacenamiento_total = usuarios * archivos_por_usuario * tamano_promedio_mb * factor_respaldo
+     """
+     validar_positivo(numero_usuarios, "numero_usuarios")
+     validar_positivo(archivos_por_usuario, "archivos_por_usuario")
+     validar_positivo(tamano_promedio_mb, "tamano_promedio_mb")
+     validar_positivo(factor_respaldo, "factor_respaldo")
+ 
+     almacenamiento_mb = (
+         numero_usuarios * archivos_por_usuario * tamano_promedio_mb * factor_respaldo
+     )
+     almacenamiento_gb = almacenamiento_mb / 1024
+ 
+     return {
+         "almacenamiento_estimado_mb": round(almacenamiento_mb, 2),
+         "almacenamiento_estimado_gb": round(almacenamiento_gb, 2)
+     }
