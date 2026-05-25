@@ -20,8 +20,15 @@ Opcion = st.sidebar.selectbox("Seleccione una opcion", ["Home","Opcion 1","Opcio
 if Opcion == "Home":
 
   st.write("Bienvenido a la Presentacion del Modulo 01")
-  st.image("IA2.jpg" )
-
+  st.image("IA2.jpg")
+  st.markdown("""
+              Realizado por Juan Guillermo Carrasco Ancajima
+              Python Fundamentals
+              2026
+              Aplicacion interactica en streamlit
+              Para esta aplicacion se uso chatgpt IA asi como API reference 
+              """)
+ 
 if Opcion == "Sesión 1":
 
   st.write("Bienvenido la sesión 1")
