@@ -48,7 +48,7 @@ if Opcion == "Opcion 1":
     """)
 
  # LISTA VACIA
-   if "movimientos" not in st.session_state:
+ if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
     # INPUTS
