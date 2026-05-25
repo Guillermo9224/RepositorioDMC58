@@ -5,6 +5,7 @@ import math
 from libreria_funciones_proyecto1 import calcular_disponibilidad_sistema
 from libreria_clases_proyecto1 import Servidor
 
+
 st.title("Presentacion Modulo 01")
 
 
