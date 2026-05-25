@@ -36,7 +36,16 @@ if Opcion == "Home":
 if Opcion == "Opcion 1":
 
   st.header("Modulo Flujo de Caja")
-  
+  st.markdown("""
+    ### Descripcion
+
+    Esta aplicacion permite registrar:
+
+    - Ingresos
+    - Gastos
+
+    y mostrar el saldo final.
+    """)
 
  
 
