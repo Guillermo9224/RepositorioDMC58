@@ -21,7 +21,8 @@ if Opcion == "Home":
 
 st.write("Bienvenido a la Presentacion del Modulo 01")
 st.image("Python_logo.png" )
-if sesion == "Sesión 1":
+
+if Opcion == "Sesión 1":
 
   st.write("Bienvenido la sesión 1")
 
@@ -29,7 +30,7 @@ if sesion == "Sesión 1":
 
  
 
-elif sesion == "Sesión 2":
+elif Opcion == "Sesión 2":
 
   st.write("Bienvenido la sesión 2")
 
@@ -48,7 +49,7 @@ elif sesion == "Sesión 2":
   st.write("El precio final del producto es: ", precio_final_producto  )
 
  
-elif sesion == "Sesión 3":
+elif Opcion == "Sesión 3":
 
   st.write("Bienvenido la sesión 3")
 
