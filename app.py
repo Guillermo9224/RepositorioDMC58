@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import numpy as np
 st.title("Presentacion Modulo 01")
 
 
@@ -109,6 +109,101 @@ if Opcion == "Opcion 1":
         else:
             st.error("Flujo de caja en contra")
 
- 
+
+if Opcion == "Opcion 2":
+
+    st.header("Registro de Productos")
+
+    st.markdown("""
+    ### Descripcion
+
+    Esta aplicacion permite registrar productos usando NumPy.
+
+    Se registran:
+
+    - Nombre del producto
+    - Categoria
+    - Precio
+    - Cantidad
+    - Total
+    """)
+
+    # LISTAS VACIAS
+    if "productos" not in st.session_state:
+
+        st.session_state.productos = []
+        st.session_state.categorias = []
+        st.session_state.precios = []
+        st.session_state.cantidades = []
+        st.session_state.totales = []
+
+    # FORMULARIO
+
+    producto = st.text_input("Ingrese producto")
+
+    categoria = st.selectbox(
+        "Seleccione categoria",
+        ["Tecnologia", "Ropa", "Alimentos", "Otros"]
+    )
+
+    precio = st.number_input(
+        "Ingrese precio",
+        min_value=0.0
+    )
+
+    cantidad = st.number_input(
+        "Ingrese cantidad",
+        min_value=1
+    )
+
+    # BOTON
+    if st.button("Agregar producto"):
+
+        total = precio * cantidad
+
+        # GUARDAR DATOS
+        st.session_state.productos.append(producto)
+
+        st.session_state.categorias.append(categoria)
+
+        st.session_state.precios.append(precio)
+
+        st.session_state.cantidades.append(cantidad)
+
+        st.session_state.totales.append(total)
+
+        st.success("Producto agregado correctamente")
+
+    # MOSTRAR TABLA
+    if len(st.session_state.productos) > 0:
+
+        # ARRAYS NUMPY
+        productos_np = np.array(st.session_state.productos)
+
+        categorias_np = np.array(st.session_state.categorias)
+
+        precios_np = np.array(st.session_state.precios)
+
+        cantidades_np = np.array(st.session_state.cantidades)
+
+        totales_np = np.array(st.session_state.totales)
+
+        # DATAFRAME
+        df = pd.DataFrame({
+            "Producto": productos_np,
+            "Categoria": categorias_np,
+            "Precio": precios_np,
+            "Cantidad": cantidades_np,
+            "Total": totales_np
+        })
+
+        st.subheader("Lista de productos")
+
+        st.dataframe(df)
+
+        # TOTAL GENERAL
+        suma_total = totales_np.sum()
+
+        st.metric("Venta total", suma_total)
 
 
