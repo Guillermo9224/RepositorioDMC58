@@ -19,8 +19,8 @@ Opcion = st.sidebar.selectbox("Seleccione una opcion", ["Home","Opcion 1","Opcio
 
 if Opcion == "Home":
 
-st.write("Bienvenido a la Presentacion del Modulo 01")
-st.image("Python_logo.png" )
+  st.write("Bienvenido a la Presentacion del Modulo 01")
+  st.image("Python_logo.png" )
 
 if Opcion == "Sesión 1":
 
