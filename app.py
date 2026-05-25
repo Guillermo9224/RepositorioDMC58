@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import math
 from libreria_funciones_proyecto1 import calcular_disponibilidad_sistema
+from libreria_clases_proyecto1 import Servidor
 
 st.title("Presentacion Modulo 01")
 
@@ -272,3 +273,127 @@ if Opcion == "Opcion 3":
         st.subheader("Historial de resultados")
 
         st.dataframe(df_historial)
+
+if Opcion == "Opcion 4":
+
+    st.header("CRUD de Servidores")
+
+    st.markdown("""
+    ### Descripcion
+
+    Esta aplicacion permite:
+
+    - Crear servidores
+    - Visualizar registros
+    - Actualizar registros
+    - Eliminar registros
+
+    usando una clase externa.
+    """)
+
+    # LISTA VACIA
+    if "servidores" not in st.session_state:
+        st.session_state.servidores = []
+
+    # =========================
+    # CREAR SERVIDOR
+    # =========================
+
+    st.subheader("Crear servidor")
+
+    nombre = st.text_input("Nombre servidor")
+
+    tiempo_total = st.number_input(
+        "Tiempo total (horas)",
+        min_value=1.0
+    )
+
+    tiempo_caida = st.number_input(
+        "Tiempo caida (horas)",
+        min_value=0.0
+    )
+
+    almacenamiento_total = st.number_input(
+        "Almacenamiento total GB",
+        min_value=1.0
+    )
+
+    almacenamiento_usado = st.number_input(
+        "Almacenamiento usado GB",
+        min_value=0.0
+    )
+
+    # BOTON CREAR
+    if st.button("Crear servidor"):
+
+        servidor = Servidor(
+            nombre,
+            tiempo_total,
+            tiempo_caida,
+            almacenamiento_total,
+            almacenamiento_usado
+        )
+
+        datos = servidor.resumen()
+
+        st.session_state.servidores.append(datos)
+
+        st.success("Servidor agregado correctamente")
+
+    # =========================
+    # MOSTRAR TABLA
+    # =========================
+
+    if len(st.session_state.servidores) > 0:
+
+        df_servidores = pd.DataFrame(
+            st.session_state.servidores
+        )
+
+        st.subheader("Lista de servidores")
+
+        st.dataframe(df_servidores)
+
+        # =========================
+        # ACTUALIZAR
+        # =========================
+
+        st.subheader("Actualizar estado")
+
+        indice_actualizar = st.number_input(
+            "Seleccione fila a actualizar",
+            min_value=0,
+            max_value=len(st.session_state.servidores)-1,
+            step=1
+        )
+
+        nuevo_estado = st.selectbox(
+            "Nuevo estado",
+            ["Óptimo", "Advertencia", "Crítico"]
+        )
+
+        if st.button("Actualizar registro"):
+
+            st.session_state.servidores[indice_actualizar]["estado"] = nuevo_estado
+
+            st.success("Registro actualizado")
+
+        # =========================
+        # ELIMINAR
+        # =========================
+
+        st.subheader("Eliminar registro")
+
+        indice_eliminar = st.number_input(
+            "Seleccione fila a eliminar",
+            min_value=0,
+            max_value=len(st.session_state.servidores)-1,
+            step=1,
+            key="eliminar"
+        )
+
+        if st.button("Eliminar servidor"):
+
+            st.session_state.servidores.pop(indice_eliminar)
+
+            st.success("Servidor eliminado")
