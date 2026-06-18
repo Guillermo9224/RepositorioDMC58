@@ -2,8 +2,8 @@
 """
 Caso de Estudio N°2 - EDA TelcoCustomerChurn
 Especialización Python for Analytics
-Autor: Guillermo
-Año: 2025
+Autor: Guillermo Carrasco
+Año: 2026
 """
  
 import streamlit as st
@@ -145,15 +145,11 @@ if modulo == "🏠 Home":
         Contiene información de clientes de una empresa de telecomunicaciones:
         servicios contratados, facturación, tiempo de permanencia y si
         el cliente abandonó o no la empresa.
- 
-        Durante el último mes, el ratio de churn subió de 2% a 2.5%
-        por el impacto del COVID-19. Retener un cliente es 6–7 veces
-        más barato que adquirir uno nuevo.
         """)
  
     with col2:
         st.subheader("👤 Datos del autor")
-        st.info("**Nombre:** Guillermo\n\n**Curso:** Especialización Python for Analytics\n\n**Año:** 2025")
+        st.info("**Nombre:** Guillermo Carrasco\n\n**Curso:** Especialización Python for Analytics\n\n**Año:** 2026")
  
         st.subheader("🛠️ Tecnologías")
         st.write("- Python 3.11")
