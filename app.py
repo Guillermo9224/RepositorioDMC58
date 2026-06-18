@@ -153,10 +153,10 @@ if modulo == "🏠 Home":
 
     with col2:
         st.subheader("👤 Datos del autor")
-        st.info("**Nombre:** Guillermo\n\n**Curso:** Especialización Python for Analytics\n\n**Año:** 2025")
+        st.info("**Nombre:** Guillermo Carrasco\n\n**Curso:** Especialización Python for Analytics\n\n**Año:** 2026")
 
         st.subheader("🛠️ Tecnologías")
-        st.write("- Python 3.11")
+        st.write("- Python")
         st.write("- Pandas")
         st.write("- NumPy")
         st.write("- Matplotlib")
