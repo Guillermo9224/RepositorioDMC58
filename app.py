@@ -71,14 +71,9 @@ class DataAnalyzer:
 
     def plot_boxplot(self, col):
         fig, ax = plt.subplots()
-        data_no  = self.df[self.df["Churn"] == "No"][col].dropna()
-        data_yes = self.df[self.df["Churn"] == "Yes"][col].dropna()
-        bp = ax.boxplot([data_no, data_yes], labels=["No Churn", "Churn"],
-                        patch_artist=True)
-        bp["boxes"][0].set_facecolor("steelblue")
-        bp["boxes"][0].set_alpha(0.6)
-        bp["boxes"][1].set_facecolor("tomato")
-        bp["boxes"][1].set_alpha(0.6)
+        sns.boxplot(data=self.df, x="Churn", y=col,
+                    palette={"No": "steelblue", "Yes": "tomato"},
+                    ax=ax)
         ax.set_title(f"{col} por Churn")
         ax.set_ylabel(col)
         return fig
